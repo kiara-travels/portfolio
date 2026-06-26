@@ -18,8 +18,12 @@ const initialState: FormState = {
   message: "",
 };
 
+const primaryWhatsappNumber = "919014825143";
+
 export function EnquiryForm() {
   const [form, setForm] = useState<FormState>(initialState);
+  const fieldClassName =
+    "form-field h-14 w-full rounded-[1.2rem] border border-white/10 bg-[#0d161e] px-4 text-white outline-none transition focus:border-amber-200/50";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -35,10 +39,9 @@ export function EnquiryForm() {
       `Details: ${form.message || "No extra details"}`,
     ];
 
-    const whatsappUrl = `https://wa.me/916301165023?text=${encodeURIComponent(
-      lines.join("\n"),
-    )}`;
+    const message = encodeURIComponent(lines.join("\n"));
 
+    const whatsappUrl = `https://wa.me/${primaryWhatsappNumber}?text=${message}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   }
 
@@ -55,7 +58,7 @@ export function EnquiryForm() {
             onChange={(event) =>
               setForm((current) => ({ ...current, name: event.target.value }))
             }
-            className="rounded-[1.2rem] border border-white/10 bg-[#0d161e] px-4 py-4 text-white outline-none transition focus:border-amber-200/50"
+            className={fieldClassName}
             placeholder="Enter your name"
           />
         </label>
@@ -70,7 +73,7 @@ export function EnquiryForm() {
             onChange={(event) =>
               setForm((current) => ({ ...current, phone: event.target.value }))
             }
-            className="rounded-[1.2rem] border border-white/10 bg-[#0d161e] px-4 py-4 text-white outline-none transition focus:border-amber-200/50"
+            className={fieldClassName}
             placeholder="+91"
           />
         </label>
@@ -89,7 +92,7 @@ export function EnquiryForm() {
                 travelType: event.target.value,
               }))
             }
-            className="rounded-[1.2rem] border border-white/10 bg-[#0d161e] px-4 py-4 text-white outline-none transition focus:border-amber-200/50"
+            className={`${fieldClassName} appearance-none pr-12`}
           >
             <option>Airport Pickup</option>
             <option>Airport Drop</option>
@@ -113,7 +116,7 @@ export function EnquiryForm() {
                 travelDate: event.target.value,
               }))
             }
-            className="rounded-[1.2rem] border border-white/10 bg-[#0d161e] px-4 py-4 text-white outline-none transition focus:border-amber-200/50"
+            className={`${fieldClassName} form-date pr-4`}
           />
         </label>
       </div>
@@ -128,7 +131,7 @@ export function EnquiryForm() {
           onChange={(event) =>
             setForm((current) => ({ ...current, message: event.target.value }))
           }
-          className="rounded-[1.2rem] border border-white/10 bg-[#0d161e] px-4 py-4 text-white outline-none transition focus:border-amber-200/50"
+          className="form-field min-h-36 w-full rounded-[1.2rem] border border-white/10 bg-[#0d161e] px-4 py-4 text-white outline-none transition focus:border-amber-200/50"
           placeholder="Pickup location, drop location, number of passengers, or anything else"
         />
       </label>
@@ -141,7 +144,7 @@ export function EnquiryForm() {
           Send Enquiry on WhatsApp
         </button>
         <p className="text-sm leading-7 text-slate-300">
-          Fastest response. Your details will open directly in WhatsApp.
+          Your enquiry will open on the main WhatsApp number by default.
         </p>
       </div>
     </form>

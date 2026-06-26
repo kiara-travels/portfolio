@@ -38,6 +38,35 @@ a {
   text-decoration: none;
 }
 
+.form-field {
+  font: inherit;
+}
+
+.form-field::placeholder {
+  color: rgba(226, 232, 240, 0.55);
+}
+
+select.form-field {
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(246, 241, 232, 0.9) 50%),
+    linear-gradient(135deg, rgba(246, 241, 232, 0.9) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.35rem) calc(50% - 0.1rem),
+    calc(100% - 0.95rem) calc(50% - 0.1rem);
+  background-size: 0.45rem 0.45rem, 0.45rem 0.45rem;
+  background-repeat: no-repeat;
+}
+
+.form-date {
+  color-scheme: dark;
+}
+
+.form-date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.95);
+  opacity: 0.85;
+}
+
 .font-display {
   font-family: var(--font-display);
   letter-spacing: 0.01em;
@@ -107,6 +136,23 @@ a {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
 }
 
+.route-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top left, rgba(210, 166, 91, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.route-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(210, 166, 91, 0.35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
 .deferred-section {
   content-visibility: auto;
   contain-intrinsic-size: 900px;
@@ -154,7 +200,8 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .reveal-up,
   .float-card,
-  .service-card {
+  .service-card,
+  .route-card {
     animation: none !important;
     transition: none !important;
   }

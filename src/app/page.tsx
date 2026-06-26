@@ -82,6 +82,51 @@ export default function Home() {
     },
   ];
 
+  const popularRoutes = [
+    {
+      from: "Bengaluru",
+      to: "Tirupati",
+      note: "Comfortable temple travel with flexible pickup timing and family-friendly stops.",
+    },
+    {
+      from: "Bengaluru",
+      to: "Kerala",
+      note: "Long-distance scenic travel for holidays, family tours and relaxed multi-day rides.",
+    },
+    {
+      from: "Bengaluru",
+      to: "Goa",
+      note: "Popular weekend and holiday route with safe highway travel and luggage support.",
+    },
+    {
+      from: "Bengaluru",
+      to: "Mysuru & Coorg",
+      note: "Easy getaway route for sightseeing, coffee estates and family vacation plans.",
+    },
+  ];
+
+  const destinations = [
+    "Tirupati Temple Tour",
+    "Kerala Family Tour",
+    "Goa Holiday Package",
+    "Mysuru Palace Visit",
+    "Coorg Hill Escape",
+    "South India Temple Circuit",
+  ];
+
+  const contactNumbers = [
+    {
+      label: "Main Enquiry Number",
+      number: "+91 9014825143",
+      whatsapp: "919014825143",
+    },
+    {
+      label: "Alternative Number",
+      number: "+91 6301165023",
+      whatsapp: "916301165023",
+    },
+  ];
+
   const journeys = [
     {
       name: "Temple Trails",
@@ -133,7 +178,7 @@ export default function Home() {
           </div>
           <a
             href="tel:+919014825143"
-            className="inline-flex w-fit items-center justify-center rounded-full border border-amber-200/30 px-5 py-3 text-sm font-semibold text-amber-50 transition hover:-translate-y-0.5 hover:border-amber-100 hover:bg-white/8"
+            className="inline-flex w-fit self-end items-center justify-center rounded-full border-2 border-amber-200/35 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-amber-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:-translate-y-0.5 hover:border-amber-100 hover:bg-white/8 sm:self-auto"
           >
             Call Now
           </a>
@@ -302,28 +347,99 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 self-center">
-            <a
-              href="tel:+919014825143"
-              className="rounded-[1.5rem] border border-white/10 bg-[#101922] px-6 py-5 text-white transition hover:border-amber-200/40 hover:bg-[#13202b]"
-            >
-              <span className="block text-xs uppercase tracking-[0.3em] text-amber-100/60">
-                Phone 1
-              </span>
-              <span className="mt-2 block text-2xl font-semibold">
-                +91 9014825143
-              </span>
-            </a>
-            <a
-              href="tel:+916301165023"
-              className="rounded-[1.5rem] border border-white/10 bg-[#101922] px-6 py-5 text-white transition hover:border-amber-200/40 hover:bg-[#13202b]"
-            >
-              <span className="block text-xs uppercase tracking-[0.3em] text-amber-100/60">
-                Phone 2
-              </span>
-              <span className="mt-2 block text-2xl font-semibold">
-                +91 6301165023
-              </span>
-            </a>
+            {contactNumbers.map((contact) => (
+              <div
+                key={contact.number}
+                className="glass-card rounded-[1.5rem] p-5"
+              >
+                <span className="block text-xs uppercase tracking-[0.3em] text-amber-100/60">
+                  {contact.label}
+                </span>
+                <span className="mt-2 block text-2xl font-semibold text-white">
+                  {contact.number}
+                </span>
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={`tel:${contact.number.replace(/\s/g, "")}`}
+                    className="rounded-full bg-amber-200 px-5 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-amber-100"
+                  >
+                    Call
+                  </a>
+                  <a
+                    href={`https://wa.me/${contact.whatsapp}`}
+                    className="rounded-full border border-white/10 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/8"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Send Query
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="deferred-section px-5 py-16 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+            <div>
+              <p className="text-xs uppercase tracking-[0.4em] text-amber-200/70">
+                Popular Routes
+              </p>
+              <h2 className="font-display mt-4 text-[2.4rem] leading-tight text-white sm:text-[3.2rem]">
+                Frequently booked trips from Bengaluru and nearby cities
+              </h2>
+            </div>
+            <p className="max-w-2xl text-base leading-8 text-slate-300">
+              We regularly handle airport transfers, temple visits, weekend
+              getaways and family tours on popular routes like Bengaluru to
+              Tirupati, Kerala, Goa, Mysuru and Coorg.
+            </p>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="grid gap-5 md:grid-cols-2">
+              {popularRoutes.map((route) => (
+                <article
+                  key={`${route.from}-${route.to}`}
+                  className="route-card reveal-up rounded-[2rem] p-6"
+                >
+                  <p className="text-xs uppercase tracking-[0.32em] text-amber-100/65">
+                    Popular Trip
+                  </p>
+                  <h3 className="font-display mt-4 text-[2rem] leading-tight text-white">
+                    {route.from} to {route.to}
+                  </h3>
+                  <p className="mt-3 text-sm leading-8 text-slate-300">
+                    {route.note}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <div className="glass-card rounded-[2rem] p-6 sm:p-8">
+              <p className="text-xs uppercase tracking-[0.35em] text-amber-100/65">
+                Touring Destinations
+              </p>
+              <div className="mt-5 grid gap-3">
+                {destinations.map((destination, index) => (
+                  <div
+                    key={destination}
+                    className="flex items-center justify-between rounded-[1.35rem] border border-white/10 bg-black/15 px-4 py-4"
+                  >
+                    <span className="text-sm text-slate-200">{destination}</span>
+                    <span className="font-display text-2xl text-amber-100/70">
+                      0{index + 1}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-sm leading-7 text-slate-300">
+                Custom routes can also be arranged for family events, pilgrim
+                tours, sightseeing plans and longer outstation journeys.
+              </p>
+            </div>
           </div>
         </div>
       </section>
