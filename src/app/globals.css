@@ -31,6 +31,7 @@ body {
     radial-gradient(circle at 85% 15%, rgba(117, 160, 181, 0.18), transparent 24%),
     linear-gradient(180deg, #081018 0%, #0b1620 46%, #071018 100%);
   letter-spacing: 0.01em;
+  overflow-x: hidden;
 }
 
 a {
@@ -57,6 +58,14 @@ a {
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
 }
 
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(14px);
+}
+
 .journey-card {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background:
@@ -70,4 +79,83 @@ a {
   background:
     linear-gradient(180deg, rgba(3, 9, 16, 0.04) 10%, rgba(3, 9, 16, 0.72) 72%, rgba(3, 9, 16, 0.92) 100%),
     linear-gradient(135deg, rgba(210, 166, 91, 0.14), transparent 38%);
+}
+
+.brand-badge {
+  background:
+    radial-gradient(circle at top, rgba(210, 166, 91, 0.18), transparent 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 32px rgba(0, 0, 0, 0.2);
+}
+
+.service-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(210, 166, 91, 0.14), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(210, 166, 91, 0.35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+}
+
+.deferred-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+.reveal-up {
+  animation: revealUp 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 120ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 220ms;
+}
+
+.float-card {
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .float-card,
+  .service-card {
+    animation: none !important;
+    transition: none !important;
+  }
 }
