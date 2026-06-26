@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #071018;
+  --foreground: #f6f1e8;
+  --font-body:
+    "Optima", "Candara", "Noto Sans", "Segoe UI", sans-serif;
+  --font-display:
+    "Baskerville", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  background-image:
+    radial-gradient(circle at top left, rgba(210, 166, 91, 0.16), transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(117, 160, 181, 0.18), transparent 24%),
+    linear-gradient(180deg, #081018 0%, #0b1620 46%, #071018 100%);
+  letter-spacing: 0.01em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.travel-frame {
+  background:
+    radial-gradient(circle at top right, rgba(217, 181, 113, 0.18), transparent 20%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+}
+
+.gallery-panel {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    linear-gradient(155deg, rgba(217, 181, 113, 0.16), transparent 48%);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.journey-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, transparent 5%, rgba(2, 10, 18, 0.92) 100%),
+    radial-gradient(circle at top, rgba(255, 220, 154, 0.22), transparent 34%),
+    linear-gradient(135deg, #293848 0%, #13202c 45%, #09131d 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.photo-overlay {
+  background:
+    linear-gradient(180deg, rgba(3, 9, 16, 0.04) 10%, rgba(3, 9, 16, 0.72) 72%, rgba(3, 9, 16, 0.92) 100%),
+    linear-gradient(135deg, rgba(210, 166, 91, 0.14), transparent 38%);
+}
